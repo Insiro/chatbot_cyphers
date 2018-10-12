@@ -1,3 +1,15 @@
+from django.shortcuts import render
+from django.views.decorators.csrf import csrf_exempt
+from django.http import JsonResponse
+import json
+ 
+ 
+ 
+def keyboard(request):
+ 
+    return JsonResponse({
+        'type':'buttons',
+        'buttons':['오늘','내일']
     })
  
 @csrf_exempt
