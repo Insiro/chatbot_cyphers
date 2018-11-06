@@ -9,7 +9,7 @@ defualtList = ['랭킹', '전적검색', '오싸']
 def keyboard(request):
     return JsonResponse({
         'type': 'buttons',
-        'buttons': defualtList
+        'buttons': ['랭킹', '전적검색', '오싸']
     })
 status = 0
 season = 13
