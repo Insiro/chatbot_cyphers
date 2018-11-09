@@ -5,12 +5,14 @@ import json
 
 defualtList = ['랭킹','전적검색','오싸']
 
-
 def keyboard(request):
+ 
     return JsonResponse({
-        'type': 'buttons',
-        'buttons': ['랭킹','전적검색','오싸']
+        'type':'buttons',
+        'buttons':['오늘','내일']
     })
+
+
 status = 0
 season = 13
 charactor = {'로라스': 'roras', '휴톤': 'huton', '루이스': 'louis', '타라': 'tara', '트리비아': 'trivia', '카인': 'cain',
