@@ -66,10 +66,11 @@ def mainSelect(data):
 def rankSelect(data):
     global status
     if data == '투신':
+        status = 0
         contents = parseRank('article/ranking/gof/f/1')
         return btnRespone(contents, defualtList)
     elif data == '통합':
-        print("asd")
+        status = 0
         contents = parseRank('article/ranking/total/13/1')
         return btnRespone(contents, defualtList)
     elif data == '캐릭터':
