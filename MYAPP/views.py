@@ -16,7 +16,7 @@ def keyboard(request):
     })
 status = 0
 season = 13
-charactor = {'로라스': 'roras', '휴톤': 'huton', '루이스': 'louis', '타라': 'tara', '트리비아': 'trivia', '카인': 'cain',
+charactor = {'로라스': 'loras', '휴톤': 'huton', '루이스': 'louis', '타라': 'tara', '트리비아': 'trivia', '카인': 'cain',
              '레나': 'rena', '드렉슬러': 'drexler', '도일': 'doyle', '토마스': 'thomas', '나이오비': 'niobe', '시바포': 'shiva',
              '시바': 'shiva', '시바 포': 'shiva', '웨슬리': 'wesley', '스텔라': 'stella', '엘리셔': 'alicia', '클레어': 'clare',
              '다이무스': 'deimus', '이글': 'eagle', '미를렌': 'marlene', '샬럿': 'charlotte', '윌라드': 'willard', '레이튼': 'lleyton',
