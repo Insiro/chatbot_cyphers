@@ -133,7 +133,7 @@ def parseHistory(data):
     tag_WL = "#container > div.content > div.record > div.record_new > table > thead > tr > th > span > img"
     tag_C = "#container > div.content > div.record > div.record_new > table > tbody > tr > td > p"
     strs = []
-    strs = '올바르지 않은 이름입니다'
+    strs = ['올','바','르','지',' ','않','은',' ','이','름','입','니','다']
     for tag in soup.select(tag_WL):
         strs.append(str(tag)[10:12])
     j = 0
