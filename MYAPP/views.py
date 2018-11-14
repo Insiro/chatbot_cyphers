@@ -59,7 +59,19 @@ def mainSelect(data):
         status = '전적'
         return textRespone('닉네임을 공백 없이 입력하시오')
     elif data == '오싸':
-        contents = '오싸'
+        link = 'http://cyphers.nexon.com/cyphers/article/today2/1'
+        req = requests.get(link)
+        html = req.text
+        soup = BeautifulSoup(html, 'html.parser')
+        strs = ''
+        tags = '#container > div.content > div.content_board > div.comm_today > div > ul > li'
+        i = 0
+        for tag in soup.select(tags):
+            if i == 4:
+                break
+            strs += str(tag.text) + '\n'
+            i += 1
+        contents = strs
         return btnRespone(contents, defualtList)
 
 
@@ -84,9 +96,31 @@ def charRank(data):
         status = 0
     else:
         return textRespone('존재하지 않는 이름입니다.\n올바른 캐릭터명을 입력하시오')
-    link='article/ranking/charac/13/' + charactor.get(data) + '/win/day/1'
-    contents ='캐릭터 랭킹'
-
+    link='http://cyphers.nexon.com/cyphers/article/ranking/charac/13/' + charactor.get(data) + '/win/day/1'
+    req = requests.get(link)
+    html = req.text
+    soup = BeautifulSoup(html, 'html.parser')
+    tags = '#rankCharacForm > div.rank_board.mar_b10 > table > tbody > tr > td'
+    i = 0
+    j = 0
+    str2 = ''
+    for tag in soup.select(tags):
+        if i == 0:
+            i += 1
+            if j != 0:
+                str2 += '\n'
+            str2 += str(j+1)
+        elif i == 1:
+            str2 += ' ' + tag.text[:7]+' '
+            i += 1
+        elif i == 4:
+            i = 0
+            j += 1
+            str2 += ''.join(tag.text[5:].split(' '))
+        else:
+            i += 1
+            continue
+    contents = str2
     return btnRespone(contents, defualtList)
 
 def parseHistory(data):
@@ -97,14 +131,12 @@ def parseHistory(data):
 
     tag_WL = "#container > div.content > div.record > div.record_new > table > thead > tr > th > span > img"
     tag_C = "#container > div.content > div.record > div.record_new > table > tbody > tr > td > p"
-    tW = soup.select(tag_WL)
-    tC = soup.select(tag_C)
     strs = []
-    for tag in tW:
+    for tag in soup.select(tag_WL):
         strs.append(str(tag)[10:12])
     j = 0
     i = -1
-    for tag2 in tC:
+    for tag2 in soup.select(tag_C):
         if (j % 2 == 0):
             j += 1
             continue
@@ -116,17 +148,37 @@ def parseHistory(data):
     return con
 
 def parseFight():
-    """
-    link='http://cyphers.nexon.com/cyphers/article/ranking/gof/f/1'
+    link = 'http://cyphers.nexon.com/cyphers/article/ranking/gof/f/1'
     req = requests.get(link)
     html = req.text
     soup = BeautifulSoup(html, 'html.parser')
-    """
-    return '투신 랭킹'
+    tags = '#container > div.content > div.content_board > div.rank_board.clan_rank.mar_b10 > table > tbody > tr > td'
+    i = 0
+    j = 0
+    str2 = ''
+    for tag in soup.select(tags):
+        if i == 0:
+            i += 1
+            if j != 0:
+                str2 += '\n'
+            str2 += str(j + 1)
+        elif i == 1:
+            str2 += ' ' + tag.text
+            i += 1
+        elif i == 2:
+            str2 += ' ' + tag.text + ' '
+            i += 1
+        elif i == 4:
+            i = 0
+            j += 1
+            str2 += ''.join(tag.text[5:].split(' '))
+        else:
+            i += 1
+            continue
+    return str2
     
     
 def parseRank():
-
     link = 'http://cyphers.nexon.com/cyphers/article/ranking/total/13/1'
     req = requests.get(link)
     html = req.text
@@ -141,7 +193,7 @@ def parseRank():
             break
         i += 1
         if i == 2:
-            str1 = str(j) + ' ' + tag.text[0:7]
+            str1 = str(j) + ' ' + tag.text[0:6]
         elif i == 3:
             str1 = str1 + ' ' + tag.text
         elif i == 4:
