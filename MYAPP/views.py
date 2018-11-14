@@ -69,7 +69,9 @@ def rankSelect(data):
         contents = parseRank('article/ranking/gof/f/1')
         return btnRespone(contents, defualtList)
     elif data == '통합':
+
         contents = parseRank('article/ranking/total/' + season + '/1')
+        print(contents)
         return btnRespone(contents, defualtList)
     elif data == '캐릭터':
         status = '캐릭랭킹'
