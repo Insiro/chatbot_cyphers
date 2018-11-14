@@ -67,11 +67,11 @@ def rankSelect(data):
     global status
     if data == '투신':
         status = 0
-        contents = parseRank('article/ranking/gof/f/1')
+        contents = parseFight('article/ranking/gof/f/1')
         return btnRespone(contents, defualtList)
     elif data == '통합':
         status = 0
-        contents = parseRank('article/ranking/total/13/1')
+        contents = parseRank()
         return btnRespone(contents, defualtList)
     elif data == '캐릭터':
         status = '캐릭랭킹'
@@ -83,10 +83,13 @@ def charRank(data):
     if data in charactor==False:
         return textRespone('존재하지 않는 이름입니다.\n올바른 캐릭터명을 입력하시오')
     status = 0
-    contents = parseRank('article/ranking/charac/13/' + charactor.get(data) + '/win/day/1')
+    link='article/ranking/charac/13/' + charactor.get(data) + '/win/day/1'
+    
+    
+    
+    contents ='캐릭터 랭킹'
 
     return btnRespone(contents, defualtList)
-
 
 def parseHistory(data):
     link = 'http://cyphers.nexon.com/cyphers/game/log/search/1/' + data
@@ -114,9 +117,17 @@ def parseHistory(data):
     con = "\n".join(strs)
     return con
 
-def parseRank(data):
+def parseFight(data):
+    link='http://cyphers.nexon.com/cyphers/article/ranking/gof/f/1'
+    req = requests.get(link)
+    html = req.text
+    soup = BeautifulSoup(html, 'html.parser')
+    return '투신 랭킹'
+    
+    
+def parseRank():
 
-    link = 'http://cyphers.nexon.com/cyphers/' + data
+    link = 'http://cyphers.nexon.com/cyphers/article/ranking/total/13/1'
     req = requests.get(link)
     html = req.text
     soup = BeautifulSoup(html, 'html.parser')
