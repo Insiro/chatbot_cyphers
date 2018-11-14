@@ -129,7 +129,7 @@ def parseHistory(data):
     req = requests.get(link)
     html = req.text
     soup = BeautifulSoup(html, 'html.parser')
-
+    con = 'error'
     tag_WL = "#container > div.content > div.record > div.record_new > table > thead > tr > th > span > img"
     tag_C = "#container > div.content > div.record > div.record_new > table > tbody > tr > td > p"
     strs = []
@@ -147,7 +147,7 @@ def parseHistory(data):
         j += 1
         i += 1
     strs[i]=' '
-    con = ''+"\n".join(strs)
+    con = "\n".join(strs)
     return con
 
 def parseFight():
