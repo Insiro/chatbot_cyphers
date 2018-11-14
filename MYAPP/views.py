@@ -133,7 +133,7 @@ def parseHistory(data):
     tag_WL = "#container > div.content > div.record > div.record_new > table > thead > tr > th > span > img"
     tag_C = "#container > div.content > div.record > div.record_new > table > tbody > tr > td > p"
     strs = []
-    strs = ['','','']
+    strs = []
     for tag in soup.select(tag_WL):
         strs.append(str(tag)[10:12])
     j = 0
@@ -146,7 +146,7 @@ def parseHistory(data):
         strs[i] += " " + "%-4s" % stsr[1] + "\t" + stsr[3][0:2]
         j += 1
         i += 1
-    con = "\n".join(strs)
+    con = "\n".str(join(strs))
     return con
 
 def parseFight():
