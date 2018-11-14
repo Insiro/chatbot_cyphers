@@ -12,7 +12,7 @@ defualtList = ['랭킹','전적검색','오싸']
 def keyboard(request):
     return JsonResponse({
         'type': 'buttons',
-        'buttons': defualtList
+        'buttons': ['랭킹','전적검색','오싸']
     })
 status = 0
 season = 13
@@ -61,17 +61,17 @@ def mainSelect(data):
     elif data == '오싸':
         status = '0'
         contents = '오싸'
-        return btnRespone(contents, defualtList)
+        return btnRespone(contents, ['랭킹','전적검색','오싸'])
 
 
 def rankSelect(data):
     global status
     if data == '투신':
         contents = parseRank('article/ranking/gof/f/1')
-        return btnRespone(contents, defualtList)
+        return btnRespone(contents, ['랭킹','전적검색','오싸'])
     elif data == '통합':
         contents = parseRank('article/ranking/total/' + season + '/1')
-        return btnRespone(contents, defualtList)
+        return btnRespone(contents, ['랭킹','전적검색','오싸'])
     elif data == '캐릭터':
         status = '캐릭랭킹'
         return textRespone('캐릭터의 이름을 입력하시오')
@@ -83,7 +83,7 @@ def charRank(data):
         return textRespone('존재하지 않는 이름입니다.\n올바른 캐릭터명을 입력하시오')
     status = 0
     contents = parseRank('article/ranking/charac/' + season + '/' + charactor.get(data) + '/win/day/1')
-    return btnRespone(contents, defualtList)
+    return btnRespone(contents, ['랭킹','전적검색','오싸'])
 
 
 def parseHistory(data):
@@ -157,4 +157,4 @@ def answer(request):
     elif status == '전적':
         status = 0
         contents = parseHistory(datacontent)
-        return btnRespone(contents, defualtList)
+        return btnRespone(contents, ['랭킹','전적검색','오싸'])
