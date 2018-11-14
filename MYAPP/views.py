@@ -59,7 +59,6 @@ def mainSelect(data):
         status = '전적'
         return textRespone('닉네임을 공백 없이 입력하시오')
     elif data == '오싸':
-        status = '0'
         contents = '오싸'
         return btnRespone(contents, defualtList)
 
