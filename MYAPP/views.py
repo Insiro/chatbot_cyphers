@@ -118,7 +118,7 @@ def charRank(data):
         elif i == 4:
             i = 0
             j += 1
-            str2 += ''.join(tag.text[5:].split(' '))
+            str2 += ''.join(tag.text[4:].split(' '))
         else:
             i += 1
             continue
