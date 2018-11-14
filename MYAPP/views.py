@@ -70,7 +70,7 @@ def rankSelect(data):
         return btnRespone(contents, defualtList)
     elif data == '통합':
         print("asd")
-        contents = parseRank('article/ranking/total/' + season + '/1')
+        contents = parseRank('article/ranking/total/13/1')
         return btnRespone(contents, defualtList)
     elif data == '캐릭터':
         status = '캐릭랭킹'
@@ -82,7 +82,7 @@ def charRank(data):
     if data in charactor==False:
         return textRespone('존재하지 않는 이름입니다.\n올바른 캐릭터명을 입력하시오')
     status = 0
-    contents = parseRank('article/ranking/charac/' + season + '/' + charactor.get(data) + '/win/day/1')
+    contents = parseRank('article/ranking/charac/13/' + charactor.get(data) + '/win/day/1')
 
     return btnRespone(contents, defualtList)
 
