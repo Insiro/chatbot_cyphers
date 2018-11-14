@@ -120,6 +120,7 @@ def charRank(data):
         else:
             i += 1
             continue
+    print(str2)
     contents = str2
     return btnRespone(contents, defualtList)
 
