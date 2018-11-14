@@ -146,7 +146,7 @@ def parseHistory(data):
         strs[i] += " " + "%-4s" % stsr[1] + "\t" + stsr[3][0:2]
         j += 1
         i += 1
-    con = "\n".str(join(strs))
+    con = ''+"\n".join(strs)
     return con
 
 def parseFight():
