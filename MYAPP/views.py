@@ -110,7 +110,7 @@ def parseHistory(data):
         j += 1
         i += 1
     con = "\n".join(strs)
-    print(con)
+    return con
 
 def parseRank(data):
 
