@@ -133,7 +133,7 @@ def parseHistory(data):
     tag_WL = "#container > div.content > div.record > div.record_new > table > thead > tr > th > span > img"
     tag_C = "#container > div.content > div.record > div.record_new > table > tbody > tr > td > p"
     strs = []
-    strs = ['']
+    strs = []
     for tag in soup.select(tag_WL):
         strs.append(str(tag)[10:12])
     j = 0
