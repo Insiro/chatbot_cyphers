@@ -129,7 +129,7 @@ def parseHistory(data):
     req = requests.get(link)
     html = req.text
     soup = BeautifulSoup(html, 'html.parser')
-    con = 'error'
+    con = '이름이 잘못되었습니다'
     tag_WL = "#container > div.content > div.record > div.record_new > table > thead > tr > th > span > img"
     tag_C = "#container > div.content > div.record > div.record_new > table > tbody > tr > td > p"
     strs = []
@@ -146,8 +146,8 @@ def parseHistory(data):
         strs[i] += " " + "%-4s" % stsr[1] + "\t" + stsr[3][0:2]
         j += 1
         i += 1
-    strs[i]=' '
-    con = "\n".join(strs)
+    if j!=0:
+        con = "\n".join(strs)
     return con
 
 def parseFight():
