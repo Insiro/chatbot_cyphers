@@ -83,6 +83,8 @@ def charRank(data):
         return textRespone('존재하지 않는 이름입니다.\n올바른 캐릭터명을 입력하시오')
     status = 0
     contents = parseRank('article/ranking/charac/' + season + '/' + charactor.get(data) + '/win/day/1')
+    print(contents)
+
     return btnRespone(contents, defualtList)
 
 
