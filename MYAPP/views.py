@@ -98,6 +98,7 @@ def charRank(data):
         status = 0
     else:
         return btnRespone('존재하지 않는 이름입니다.\n올바른 캐릭터명을 입력하시오',defualtList)
+        status = 0
     link = 'http://cyphers.nexon.com/cyphers/article/ranking/charac/13/' + charactor.get(data) + '/win/day/1'
     req = requests.get(link)
     html = req.text
